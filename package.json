@@ -1,0 +1,53 @@
+{
+  "name": "transcoder-cinesuper-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "dist": "electron-builder --win",
+    "release": "node scripts/release.js"
+  },
+  "dependencies": {
+    "electron-updater": "^6.2.4",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "electron": "^30.0.6",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.cinesuper.transcoder",
+    "productName": "CineSuper Transcoder",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**",
+      "assets/**"
+    ],
+    "extraResources": [
+      {
+        "from": "../cinesuper-upr2/server",
+        "to": "server"
+      }
+    ],
+    "win": {
+      "icon": "assets/Logo_app.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "joaofernandeslp",
+        "repo": "transcoder-cinesuper"
+      }
+    ]
+  }
+}

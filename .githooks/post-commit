@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -e
+
+if [ -z "$GH_TOKEN" ]; then
+  echo "GH_TOKEN não definido. Ignorando auto‑release."
+  exit 0
+fi
+
+npm run release
