@@ -1,6 +1,6 @@
 {
   "name": "transcoder-cinesuper-app",
-  "version": "0.1.0",
+  "version": "0.1.7",
   "private": true,
   "main": "main.js",
   "scripts": {
@@ -33,6 +33,8 @@
     ],
     "win": {
       "icon": "assets/Logo_app.ico",
+      "sign": false,
+      "signingHashAlgorithms": [],
       "target": [
         "nsis"
       ]

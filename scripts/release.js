@@ -63,7 +63,12 @@ function main() {
   pkg.version = next;
   writePkg(pkg);
 
-  execSync("npm run dist", { stdio: "inherit", cwd: root });
+  const env = {
+    ...process.env,
+    CSC_IDENTITY_AUTO_DISCOVERY: "false",
+    ELECTRON_BUILDER_CACHE: path.join(root, ".eb-cache"),
+  };
+  execSync("npm run dist -- --publish always", { stdio: "inherit", cwd: root, env });
   console.log(`Release publicado: v${next}`);
 }
 
